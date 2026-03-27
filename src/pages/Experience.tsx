@@ -6,7 +6,7 @@ import './Experience.css';
 
 const Experience = () => {
   return (
-    <div className="experience-page" id="experience">
+    <div className="experience-page">
       <motion.div 
         className="page-header"
         initial={{ opacity: 0, y: -20 }}

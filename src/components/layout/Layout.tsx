@@ -1,20 +1,17 @@
+import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { AnimatedBug } from '../ui/AnimatedBug';
 import { BugStats } from '../ui/BugStats';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = () => {
   return (
     <div className="layout">
       <AnimatedBug />
       <BugStats />
       <Navbar />
       <main className="main-content">
-        {children}
+        <Outlet />
       </main>
       <Footer />
     </div>

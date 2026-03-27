@@ -39,7 +39,7 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <div className="skills-page" id="skills">
+    <div className="skills-page">
       <motion.div 
         className="page-header"
         initial={{ opacity: 0, y: -20 }}
@@ -81,108 +81,6 @@ const Skills = () => {
             </motion.div>
           ))}
         </div>
-
-        <motion.div 
-          className="tool-stack-matrix"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="matrix-header">
-            <h3 className="matrix-title mono-text">Tool Familiarity Matrix</h3>
-            <p className="matrix-subtitle">Comprehensive technical stack across the full software lifecycle.</p>
-          </div>
-          <div className="matrix-grid">
-            <div className="matrix-col">
-              <h4>Automation & Tools</h4>
-              <motion.div 
-                className="matrix-items"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.05 }
-                  }
-                }}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {['Playwright', 'Selenium', 'Cypress', 'Figma', 'Excel'].map(tool => (
-                  <motion.span 
-                    key={tool} 
-                    className="tool-chip"
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                  >
-                    {tool}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
-            <div className="matrix-col">
-              <h4>Development & DB</h4>
-              <motion.div 
-                className="matrix-items"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
-                  }
-                }}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {['Python', 'Java / C++', 'Django', 'MySQL', 'Jupyter'].map(tool => (
-                  <motion.span 
-                    key={tool} 
-                    className="tool-chip"
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                  >
-                    {tool}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
-            <div className="matrix-col">
-              <h4>Security & Network</h4>
-              <motion.div 
-                className="matrix-items"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.05, delayChildren: 0.4 }
-                  }
-                }}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {['OWASP ZAP', 'Burp Suite', 'Nmap', 'Wireshark'].map(tool => (
-                  <motion.span 
-                    key={tool} 
-                    className="tool-chip"
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                  >
-                    {tool}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
   );

@@ -1,62 +1,24 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Bug, Menu, X, Download, Linkedin, Mail, ArrowRight, Sun, Moon } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 import './Navbar.css';
 
 const navLinks = [
-  { name: 'Home', path: 'home' },
-  { name: 'About', path: 'about' },
-  { name: 'Experience', path: 'experience' },
-  { name: 'Projects', path: 'projects' },
-  { name: 'Skills', path: 'skills' },
-  { name: 'Certifications', path: 'certifications' },
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Experience', path: '/experience' },
+  { name: 'Projects', path: '/projects' },
+  { name: 'Skills', path: '/skills' },
+  { name: 'Certifications', path: '/certifications' },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
-
-  // Scroll Spy Logic
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-30% 0px -70% 0px' } 
-    );
-
-    navLinks.forEach((link) => {
-      const el = document.getElementById(link.path);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Smooth Scroll Handler
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    setIsOpen(false);
-    
-    // If clicking home (brand logo or link), scroll to top
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    const element = document.getElementById(id);
-    if (element) {
-      // Offset for navbar height (approx 64px)
-      const y = element.getBoundingClientRect().top + window.scrollY - 64;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -92,23 +54,22 @@ const Navbar = () => {
   return (
     <header className="navbar-container">
       <div className="container navbar">
-        <a href="#home" className="brand" onClick={(e) => scrollToSection(e, 'home')}>
+        <Link to="/" className="brand" onClick={() => setIsOpen(false)}>
           <Bug className="brand-icon" size={24} />
           <div className="brand-text">
             <span className="name">Anizul</span>
             <span className="role mono-text">SQA_ENGINEER</span>
           </div>
-        </a>
+        </Link>
         
         {/* Desktop Navigation */}
         <nav className="nav-links desktop-only" aria-label="Desktop Navigation">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.path;
+            const isActive = location.pathname === link.path;
             return (
-              <a 
+              <Link 
                 key={link.path} 
-                href={`#${link.path}`}
-                onClick={(e) => scrollToSection(e, link.path)}
+                to={link.path}
                 className={`nav-link ${isActive ? 'active' : ''}`}
               >
                 {link.name}
@@ -120,7 +81,7 @@ const Navbar = () => {
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -131,10 +92,10 @@ const Navbar = () => {
                 <Linkedin size={18} />
               </a>
             </div>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="status-badge variant-outline compact">
+            <Link to="/contact" className="status-badge variant-outline compact">
               <Mail size={14} />
               <span>Contact</span>
-            </a>
+            </Link>
             <a 
               href="/Fathima_Anizul_Fathool_SQA_CV.pdf" 
               download 
@@ -175,7 +136,7 @@ const Navbar = () => {
               <div className="mobile-menu-content container">
                 <nav className="mobile-nav" aria-label="Mobile Navigation">
                   {navLinks.map((link, idx) => {
-                    const isActive = activeSection === link.path;
+                    const isActive = location.pathname === link.path;
                     return (
                       <motion.div
                         key={link.path}
@@ -183,15 +144,15 @@ const Navbar = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1 + idx * 0.05 }}
                       >
-                        <a 
-                          href={`#${link.path}`}
+                        <Link 
+                          to={link.path}
                           className={`mobile-nav-link ${isActive ? 'active' : ''}`}
-                          onClick={(e) => scrollToSection(e, link.path)}
+                          onClick={() => setIsOpen(false)}
                         >
                           <span className="link-number mono-text">0{idx + 1}</span>
                           <span className="link-text">{link.name}</span>
                           <ArrowRight className="link-arrow" size={16} />
-                        </a>
+                        </Link>
                       </motion.div>
                     );
                   })}

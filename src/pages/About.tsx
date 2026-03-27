@@ -6,7 +6,7 @@ import './About.css';
 
 const About = () => {
   return (
-    <div className="about-page" id="about">
+    <div className="about-page">
       <motion.div 
         className="about-header section-header"
         initial={{ opacity: 0, y: 30 }}

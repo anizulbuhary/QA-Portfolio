@@ -75,7 +75,7 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <div className="certifications-page" id="certifications">
+    <div className="certifications-page">
       <motion.div 
         className="page-header"
         initial={{ opacity: 0, y: -20 }}

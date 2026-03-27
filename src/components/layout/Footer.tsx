@@ -1,20 +1,8 @@
+import { Link } from 'react-router-dom';
 import { Linkedin as LinkedinIcon, Mail as MailIcon } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    const element = document.getElementById(id);
-    if (element) {
-      const y = element.getBoundingClientRect().top + window.scrollY - 64;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className="footer">
       <div className="container footer-content">
@@ -30,13 +18,13 @@ const Footer = () => {
         <div className="footer-links">
           <div className="link-group">
             <h4 className="link-group-title">Sitemap</h4>
-            <a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a>
-            <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a>
-            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>Projects</a>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/projects">Projects</Link>
           </div>
           <div className="link-group">
             <h4 className="link-group-title">Connect</h4>
-            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
+            <Link to="/contact">Contact</Link>
             <span className="footer-note">GitHub Repository: On Request</span>
           </div>
         </div>
