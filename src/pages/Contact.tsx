@@ -56,11 +56,11 @@ const Contact = () => {
                 <span className="method-val">linkedin.com/in/fathima-anizul-fathool</span>
               </div>
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="contact-method">
+            <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" className="contact-method">
               <div className="method-icon"><Github size={20} /></div>
               <div className="method-details">
                 <span className="method-label">Code Repository</span>
-                <span className="method-val">github.com/anizulfathool</span>
+                <span className="method-val">github.com/anizulbuhary</span>
               </div>
             </a>
           </div>

@@ -25,8 +25,6 @@ const Footer = () => {
           <div className="link-group">
             <h4 className="link-group-title">Connect</h4>
             <Link to="/contact">Contact</Link>
-            <span className="footer-note">LinkedIn shared on request</span>
-            <span className="footer-note">GitHub samples available on request</span>
           </div>
         </div>
 
@@ -38,7 +36,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
               <LinkedinIcon size={20} />
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+            <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
               <GithubIcon size={20} />
             </a>
           </div>

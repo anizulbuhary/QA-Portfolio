@@ -160,13 +160,13 @@ const Navbar = () => {
                   </a>
 
                   <div className="mobile-socials">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" className="social-icon">
                       <Github size={20} />
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="social-icon">
                       <Linkedin size={20} />
                     </a>
-                    <a href="mailto:contact@example.com" className="social-icon">
+                    <a href="mailto:anizulfathool@gmail.com" className="social-icon">
                       <Mail size={20} />
                     </a>
                   </div>
