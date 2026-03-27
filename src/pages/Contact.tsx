@@ -1,9 +1,33 @@
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Send, TerminalSquare, Phone } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, TerminalSquare, Phone, Copy, Check } from 'lucide-react';
 import { SeverityBadge } from '../components/ui/SeverityBadge';
+import { useState } from 'react';
 import './Contact.css';
 
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText('anizulfathool@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleTransmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    const subject = encodeURIComponent(`QA Portfolio Inquiry from ${name}`);
+    const body = encodeURIComponent(`Sender: ${name} (${email})\n\nMessage:\n${message}`);
+    
+    window.location.href = `mailto:anizulfathool@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div className="contact-page">
       <motion.div
@@ -35,13 +59,22 @@ const Contact = () => {
           </div>
 
           <div className="contact-methods">
-            <a href="mailto:anizulfathool@gmail.com" className="contact-method">
-              <div className="method-icon"><Mail size={20} /></div>
-              <div className="method-details">
-                <span className="method-label">Email Communications</span>
-                <span className="method-val">anizulfathool@gmail.com</span>
-              </div>
-            </a>
+            <div className="contact-method-wrapper relative">
+              <a href="mailto:anizulfathool@gmail.com" className="contact-method">
+                <div className="method-icon"><Mail size={20} /></div>
+                <div className="method-details">
+                  <span className="method-label">Email Communications</span>
+                  <span className="method-val">anizulfathool@gmail.com</span>
+                </div>
+              </a>
+              <button 
+                className={`copy-btn ${copied ? 'copied' : ''}`}
+                onClick={copyEmail}
+                title="Copy Email Address"
+              >
+                {copied ? <Check size={16} /> : <Copy size={16} />}
+              </button>
+            </div>
             <a href="tel:+94774168673" className="contact-method">
               <div className="method-icon"><Phone size={20} /></div>
               <div className="method-details">
@@ -77,7 +110,7 @@ const Contact = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+          <form className="contact-form" onSubmit={handleTransmit}>
             <div className="form-header">
               <h3>Secure Message Relay</h3>
               <span className="form-status mono-text">ENDPOINT READY</span>
@@ -85,17 +118,17 @@ const Contact = () => {
 
             <div className="form-group">
               <label htmlFor="name">Sender Identifier (Name)</label>
-              <input type="text" id="name" placeholder="John Doe" required />
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
             </div>
 
             <div className="form-group">
               <label htmlFor="email">Return Address (Email)</label>
-              <input type="email" id="email" placeholder="john@company.com" required />
+              <input type="email" id="email" name="email" placeholder="john@company.com" required />
             </div>
 
             <div className="form-group">
               <label htmlFor="message">Payload (Message)</label>
-              <textarea id="message" rows={5} placeholder="Discussing a potential QA opportunity..." required></textarea>
+              <textarea id="message" name="message" rows={5} placeholder="Discussing a potential QA opportunity..." required></textarea>
             </div>
 
             <button type="submit" className="btn btn-primary submit-btn">

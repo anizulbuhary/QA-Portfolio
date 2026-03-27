@@ -59,7 +59,15 @@
   gap: var(--spacing-md);
 }
 
+.contact-method-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
 .contact-method {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
@@ -68,6 +76,34 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  background-color: var(--color-brand-light);
+}
+
+.copy-btn.copied {
+  background-color: var(--color-pass-bg);
+  border-color: var(--color-pass);
+  color: var(--color-pass);
 }
 
 .contact-method:hover {

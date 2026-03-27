@@ -85,6 +85,17 @@ const Navbar = () => {
         </nav>
 
         <div className="nav-actions desktop-only">
+            <div className="social-links-desktop">
+              <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" className="social-icon-nav" title="GitHub">
+                <Github size={18} />
+              </a>
+              <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="social-icon-nav" title="LinkedIn">
+                <Linkedin size={18} />
+              </a>
+              <a href="mailto:anizulfathool@gmail.com" className="social-icon-nav" title="Email">
+                <Mail size={18} />
+              </a>
+            </div>
             <Link to="/contact" className="status-badge variant-outline compact">
               <Mail size={14} />
               <span>Contact</span>
