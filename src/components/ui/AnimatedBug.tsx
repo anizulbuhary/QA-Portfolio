@@ -184,7 +184,7 @@ const BugInstance = ({ bug, onKill }: { bug: BugState; onKill: () => void }) => 
           <motion.div
             key="bug-body"
             whileHover={{ scale: 1.15 }}
-            className={`text-zinc-600/60 hover:text-red-600 transition-colors ${bug.crawlClass}`}
+            className={`text-tertiary/60 hover:text-red-600 transition-colors ${bug.crawlClass}`}
           >
             {bug.type === 'spider' ? (
               <SpiderIcon color="currentColor" />

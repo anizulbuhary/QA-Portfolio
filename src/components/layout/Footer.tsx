@@ -1,8 +1,20 @@
-import { Link } from 'react-router-dom';
 import { Linkedin as LinkedinIcon, Mail as MailIcon } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    if (id === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 64;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="container footer-content">
@@ -18,29 +30,36 @@ const Footer = () => {
         <div className="footer-links">
           <div className="link-group">
             <h4 className="link-group-title">Sitemap</h4>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/projects">Projects</Link>
+            <a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a>
+            <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a>
+            <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>Projects</a>
           </div>
           <div className="link-group">
             <h4 className="link-group-title">Connect</h4>
-            <Link to="/contact">Contact</Link>
+            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
             <span className="footer-note">GitHub Repository: On Request</span>
           </div>
         </div>
 
         <div className="footer-actions">
           <div className="social-links" aria-label="Contact methods">
-            <a 
-              href="mailto:anizulfathool@gmail.com" 
-              title="Email anizulfathool@gmail.com"
+            <button 
               onClick={() => {
-                window.location.href = 'mailto:anizulfathool@gmail.com';
+                navigator.clipboard.writeText('anizulfathool@gmail.com');
+                alert('Email address copied to clipboard!');
               }}
+              className="social-icon"
+              title="Click to copy: anizulfathool@gmail.com"
             >
               <MailIcon size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
+            </button>
+            <a 
+              href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" 
+              className="social-icon"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              title="Visit LinkedIn Profile"
+            >
               <LinkedinIcon size={20} />
             </a>
           </div>

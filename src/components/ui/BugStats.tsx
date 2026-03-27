@@ -16,31 +16,34 @@ export const BugStats = () => {
       animate={{ y: 0, opacity: 1 }}
       className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[110] flex flex-col gap-2 max-w-[calc(100vw-2rem)] sm:max-w-[320px]"
     >
-      <div className="bg-zinc-900/95 border border-zinc-800 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-2xl min-w-[140px] md:min-w-[220px]">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] md:text-xs font-mono text-zinc-500 uppercase tracking-widest">QA Session</span>
+      <div 
+        className="border border-border rounded-2xl shadow-2xl min-w-[200px] md:min-w-[280px] overflow-visible bg-[var(--color-bg)] transition-colors"
+        style={{ padding: '1.5rem' }}
+      >
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] md:text-xs font-mono text-tertiary uppercase tracking-[0.2em]">QA Session</span>
             <div className={`w-2 h-2 rounded-full ${isInteractive ? 'bg-red-500 animate-pulse' : 'bg-amber-400'}`} />
           </div>
           <button 
             onClick={() => setIsMinimized(!isMinimized)}
-            className="p-1 hover:bg-zinc-800 rounded transition-colors text-zinc-500 hover:text-zinc-300"
+            className="p-1 hover:bg-surface-hover rounded transition-colors text-tertiary hover:text-primary"
             aria-label={isMinimized ? "Expand diagnostics" : "Minimize diagnostics"}
           >
             {isMinimized ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </button>
         </div>
         
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
             <ShieldCheck className="w-4 h-4 text-emerald-500" />
-            <span className="text-sm font-medium text-zinc-300">Resolved</span>
+            <span className="text-sm font-semibold text-secondary">Resolved</span>
           </div>
           <AnimatePresence mode="wait">
             <motion.span 
               key={resolvedCount}
               initial={{ scale: 1.5, color: '#10b981' }}
-              animate={{ scale: 1, color: '#d1d5db' }}
+              animate={{ scale: 1, color: 'var(--color-text-primary)' }}
               className="text-lg font-bold font-mono"
             >
               {resolvedCount}
@@ -55,32 +58,36 @@ export const BugStats = () => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="overflow-hidden"
+              className="overflow-visible"
             >
-              <div className="space-y-3 mt-3 pt-3 border-t border-zinc-800/50">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+              <div className="space-y-4 mt-4 pt-4 border-t border-border/50">
+                <div className="flex items-center justify-between gap-8">
+                  <div className="flex items-center gap-3">
                     <Activity className="w-4 h-4 text-blue-500" />
-                    <span className="text-sm font-medium text-zinc-300">Density</span>
+                    <span className="text-sm font-semibold text-secondary">Density</span>
                   </div>
-                  <span className="text-sm font-mono text-zinc-400">{defectDensity}</span>
+                  <span className="text-sm font-mono text-tertiary whitespace-nowrap">{defectDensity}</span>
                 </div>
 
-                <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-zinc-500">
-                  <span className="flex items-center gap-2">
+                <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.15em] text-tertiary gap-4">
+                  <span className="flex items-center gap-3">
                     {isInteractive ? (
-                      <MousePointerClick className="w-3 h-3 text-red-400" />
+                      <MousePointerClick className="w-3.5 h-3.5 text-red-500" />
                     ) : (
-                      <Smartphone className="w-3 h-3 text-amber-400" />
+                      <Smartphone className="w-3.5 h-3.5 text-amber-500" />
                     )}
                     {isInteractive ? 'Desktop Hunt' : 'Touch Mode'}
                   </span>
-                  <span>{isInteractive ? 'Enabled' : 'Passive'}</span>
+                  <span className={isInteractive ? 'text-red-500' : 'text-tertiary'}>
+                    {isInteractive ? 'Enabled' : 'Passive'}
+                  </span>
                 </div>
 
-                <div className="pt-2 flex items-center gap-2">
-                  <Bug className="w-3 h-3 text-zinc-600" />
-                  <span className="text-[10px] text-zinc-500 italic">
+                <div className="pt-2 flex items-start gap-3">
+                  <div className="mt-0.5">
+                    <Bug className="w-4 h-4 text-muted translate-x-0.5" />
+                  </div>
+                  <span className="text-[10px] text-muted italic leading-relaxed">
                     {isInteractive
                       ? 'Hover or click bugs to log fixes.'
                       : 'Interactive bugs pause on touch devices.'}

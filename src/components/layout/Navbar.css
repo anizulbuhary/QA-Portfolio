@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 200; /* Increased to stay above bug layer */
-  background-color: rgba(9, 9, 11, 0.9); /* Darker for better contrast */
+  background-color: rgba(var(--color-bg-rgb, 9, 9, 11), 0.9); /* Darker for better contrast */
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);
   transition: all 0.3s ease;
@@ -182,6 +182,41 @@
   0% { opacity: 0.6; }
   50% { opacity: 1; }
   100% { opacity: 0.6; }
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: var(--spacing-sm);
+}
+
+.theme-toggle:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  cursor: pointer;
 }
 
 @media (max-width: 992px) {

@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-page">
+    <div className="contact-page" id="contact">
       <motion.div
         className="page-header"
         initial={{ opacity: 0, y: -20 }}

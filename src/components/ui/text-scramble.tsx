@@ -115,6 +115,7 @@ export function TextScramble({
           position: 'absolute',
           inset: 0,
           fontVariantNumeric: 'tabular-nums',
+          color: 'inherit',
         }}
       >
         {displayText.split(' ').map((word, i, arr) => (

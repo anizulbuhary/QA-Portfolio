@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Network, PenTool, Database, Laptop2 } from 'lucide-react';
+import { Laptop2 } from 'lucide-react';
 import { SeverityBadge } from '../components/ui/SeverityBadge';
 import { TextScramble } from '../components/ui/text-scramble';
 import './About.css';
 
 const About = () => {
   return (
-    <div className="about-page">
+    <div className="about-page" id="about">
       <motion.div 
         className="about-header section-header"
         initial={{ opacity: 0, y: 30 }}
@@ -44,7 +44,14 @@ const About = () => {
               I bring a disciplined mindset to every project: validating assumptions with evidence, documenting defects with clarity, and collaborating closely with developers to ensure the end product meets the highest standards of quality.
             </p>
           </div>
-          
+        </motion.div>
+
+        <motion.div 
+          className="about-visuals"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <div className="academic-highlight">
             <h3 className="academic-title">Honors & Awards</h3>
             <div className="academic-card">
@@ -76,42 +83,6 @@ const About = () => {
                 <span className="lang-name">Urdu</span>
                 <span className="lang-level">Elementary</span>
               </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          className="about-visuals"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="qa-profile-card">
-            <div className="qa-profile-header">
-              <div className="profile-img-mock"></div>
-              <div>
-                <h3 className="profile-name">Fathima Anizul Fathool</h3>
-                <p className="profile-role mono-text">SQA ENGINEER</p>
-              </div>
-            </div>
-            <div className="qa-profile-stats">
-              <div className="stat-block">
-                <span className="stat-num">Analytical</span>
-                <span className="stat-label">Mindset</span>
-              </div>
-              <div className="stat-block">
-                <span className="stat-num">Structured</span>
-                <span className="stat-label">Approach</span>
-              </div>
-              <div className="stat-block">
-                <span className="stat-num">Driven</span>
-                <span className="stat-label">To Learn</span>
-              </div>
-            </div>
-            <div className="qa-profile-traits">
-              <div className="trait-pill"><Network size={14}/> Systems Thinking</div>
-              <div className="trait-pill"><Database size={14}/> Evidence Based</div>
-              <div className="trait-pill"><PenTool size={14}/> Precision Focus</div>
             </div>
           </div>
         </motion.div>

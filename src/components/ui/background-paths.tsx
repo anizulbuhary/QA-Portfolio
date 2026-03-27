@@ -68,7 +68,7 @@ export function BackgroundPaths({
     className?: string;
 }) {
     return (
-        <div className={cn("relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-zinc-950", className)}>
+        <div className={cn("relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-background", className)}>
             <div className="absolute inset-0 z-0">
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />

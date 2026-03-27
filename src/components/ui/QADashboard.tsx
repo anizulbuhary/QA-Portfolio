@@ -65,18 +65,18 @@ export const QADashboard = () => {
       </div>
       <div className="mock-body">
         <div className="mock-stat-row">
-          <span className="stat-label uppercase tracking-wider text-[10px] md:text-xs text-zinc-500 font-mono">Total Tests Executed:</span>
+          <span className="stat-label uppercase tracking-wider text-[10px] md:text-xs text-tertiary font-mono">Total Tests Executed:</span>
           <motion.span 
             key={stats.total}
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
-            className="stat-val mono-text text-zinc-200"
+            className="stat-val mono-text text-primary"
           >
             {stats.total.toLocaleString()}
           </motion.span>
         </div>
         <div className="mock-stat-row">
-          <span className="stat-label uppercase tracking-wider text-[10px] md:text-xs text-zinc-500 font-mono">Pass Rate:</span>
+          <span className="stat-label uppercase tracking-wider text-[10px] md:text-xs text-tertiary font-mono">Pass Rate:</span>
           <motion.span 
             key={stats.pass}
             initial={{ opacity: 0.5 }}
@@ -87,7 +87,7 @@ export const QADashboard = () => {
           </motion.span>
         </div>
         
-        <div className="mock-chart mt-4 mb-6 relative overflow-hidden bg-zinc-800/50 h-2 rounded-full flex">
+        <div className="mock-chart mt-4 mb-6 relative overflow-hidden bg-border/50 h-2 rounded-full flex">
           <motion.div 
             className="h-full bg-emerald-500 flex-shrink-0" 
             initial={{ width: "0%" }}
@@ -102,7 +102,7 @@ export const QADashboard = () => {
           />
         </div>
 
-        <div className="mock-logs-container bg-black/40 rounded-lg p-3 md:p-4 border border-zinc-800/50">
+        <div className="mock-logs-container bg-background rounded-lg p-3 md:p-4 border border-border/50">
           <div 
             ref={scrollRef}
             className="mock-logs mono-text h-[200px] overflow-hidden flex flex-col gap-1.5"
@@ -115,7 +115,7 @@ export const QADashboard = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
                   transition={{ duration: 0.3 }}
-                  className="flex gap-2 text-[10px] md:text-[11px] leading-relaxed"
+                  className="flex gap-2 text-[10px] md:text-[11px] leading-relaxed pl-1"
                 >
                   <span className={`uppercase font-bold whitespace-nowrap ${
                     log.type === 'pass' ? 'text-emerald-500' : 
@@ -125,7 +125,7 @@ export const QADashboard = () => {
                   }`}>
                     [{log.type === 'pass' ? 'PASS' : log.type === 'warn' ? 'WARN' : log.type === 'error' ? 'ERROR' : 'INFO'}]
                   </span>
-                  <span className="text-zinc-400">{log.msg}</span>
+                  <span className="text-secondary">{log.msg}</span>
                 </motion.div>
               ))}
             </AnimatePresence>

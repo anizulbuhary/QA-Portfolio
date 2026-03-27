@@ -99,7 +99,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="projects-page">
+    <div className="projects-page" id="projects">
       <div className="container">
         <motion.div 
           className="section-header"

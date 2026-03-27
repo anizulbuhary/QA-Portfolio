@@ -81,22 +81,24 @@
   gap: var(--spacing-md);
 }
 
-.social-links span {
+.social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: var(--radius-full, 50%);
+  border-radius: 50%;
   background-color: var(--color-surface-hover);
   color: var(--color-text-secondary);
   transition: all 0.2s ease;
+  border: 1px solid var(--color-border);
 }
 
-.social-links span:hover {
+.social-icon:hover {
   background-color: var(--color-brand);
   color: #fff;
   transform: translateY(-2px);
+  border-color: var(--color-brand);
 }
 
 .footer-bottom {

@@ -6,7 +6,7 @@ import './Experience.css';
 
 const Experience = () => {
   return (
-    <div className="experience-page">
+    <div className="experience-page" id="experience">
       <motion.div 
         className="page-header"
         initial={{ opacity: 0, y: -20 }}
@@ -14,10 +14,10 @@ const Experience = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="container">
-          <SeverityBadge level="medium">Operational Record</SeverityBadge>
+          <SeverityBadge level="medium">Experience</SeverityBadge>
           <h1 className="page-title">
             <TextScramble duration={1.2} delay={0.1}>
-              Operational Records
+              Experience
             </TextScramble>
           </h1>
         </div>

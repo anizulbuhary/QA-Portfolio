@@ -39,7 +39,7 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <div className="skills-page">
+    <div className="skills-page" id="skills">
       <motion.div 
         className="page-header"
         initial={{ opacity: 0, y: -20 }}

@@ -16,7 +16,7 @@ import './Home.css';
 
 const Home = () => {
   return (
-    <div className="home-page">
+    <div className="home-page" id="home">
       <BackgroundPaths className="hero-section-bg">
         <section className="hero container">
           <motion.div

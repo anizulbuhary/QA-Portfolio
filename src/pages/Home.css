@@ -28,6 +28,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: var(--spacing-lg);
+  color: var(--color-text-primary); /* Force specific variable color */
 }
 
 .text-brand {
@@ -36,7 +37,7 @@
 
 .hero-description {
   font-size: clamp(1rem, 2vw, 1.125rem);
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary); /* Force specific variable color */
   max-width: 36rem;
   margin-bottom: var(--spacing-2xl);
   line-height: 1.7;
@@ -50,7 +51,7 @@
 
 .hero-meta {
   margin-top: var(--spacing-lg);
-  color: var(--color-text-tertiary);
+  color: var(--color-text-tertiary); /* Force specific variable color */
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -93,11 +94,11 @@
 
 /* Mock Dashboard */
 .qa-dashboard-mock {
-  background: var(--color-bg-alt);
+  background: var(--color-bg); /* Pure white as main theme */
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-2xl);
+  box-shadow: var(--shadow-lg);
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
@@ -113,7 +114,7 @@
 }
 
 .mock-header {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-surface-hover);
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--color-border);
   display: flex;
@@ -144,7 +145,7 @@
 
 .mock-title {
   font-size: 0.75rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-tertiary);
 }
 
 .mock-body {
@@ -160,7 +161,7 @@
 
 .stat-label {
   font-size: 0.875rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-tertiary);
 }
 
 .stat-val {
@@ -169,7 +170,7 @@
 }
 
 .stat-val.pass {
-  color: var(--color-success);
+  color: var(--color-pass);
 }
 
 .mock-chart {
@@ -185,16 +186,16 @@
 }
 
 .mock-chart .bar.pass {
-  background: var(--color-success);
+  background: var(--color-pass);
 }
 
 .mock-chart .bar.fail {
-  background: var(--color-error);
+  background: var(--color-fail);
   opacity: 0.5;
 }
 
 .mock-logs {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-alt);
   padding: 1rem;
   border-radius: var(--radius-md);
   font-size: 0.75rem;
@@ -202,6 +203,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  border: 1px solid var(--color-border);
 }
 
 .log-warn {
