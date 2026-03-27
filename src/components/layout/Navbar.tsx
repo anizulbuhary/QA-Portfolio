@@ -89,16 +89,6 @@ const Navbar = () => {
               <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="social-icon-nav" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a 
-                href="mailto:anizulfathool@gmail.com" 
-                className="social-icon-nav" 
-                title="Email"
-                onClick={() => {
-                  window.location.href = 'mailto:anizulfathool@gmail.com';
-                }}
-              >
-                <Mail size={18} />
-              </a>
             </div>
             <Link to="/contact" className="status-badge variant-outline compact">
               <Mail size={14} />
@@ -177,15 +167,6 @@ const Navbar = () => {
                   <div className="mobile-socials">
                     <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="social-icon">
                       <Linkedin size={20} />
-                    </a>
-                    <a 
-                      href="mailto:anizulfathool@gmail.com" 
-                      className="social-icon"
-                      onClick={() => {
-                        window.location.href = 'mailto:anizulfathool@gmail.com';
-                      }}
-                    >
-                      <Mail size={20} />
                     </a>
                   </div>
                 </motion.div>
