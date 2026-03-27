@@ -4,11 +4,25 @@
   min-height: calc(100svh - 4rem);
 }
 
-.page-subtitle {
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  margin: var(--spacing-sm) 0;
+}
+
+.section-subtitle {
   color: var(--color-text-secondary);
   font-size: 1.125rem;
-  margin-top: var(--spacing-sm);
-  max-width: 600px;
+  line-height: 1.6;
 }
 
 .case-studies-list {
