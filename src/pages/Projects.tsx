@@ -109,9 +109,12 @@ const Projects = () => {
         >
           <SeverityBadge level="high">Selected Projects</SeverityBadge>
           <h1 className="section-title">
-            <TextScramble duration={1.2} delay={0.1}>
-              Project Implementations
-            </TextScramble>
+            <span className="line-1">
+              <TextScramble duration={1} delay={0.1}>Project</TextScramble>
+            </span>
+            <span className="line-2">
+              <TextScramble duration={1} delay={0.4}>Implementations</TextScramble>
+            </span>
           </h1>
           <p className="section-subtitle">
             A diverse portfolio showcasing AI-driven systems, product designs, and comprehensive quality assurance assessments.
