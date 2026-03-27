@@ -60,7 +60,13 @@ const Contact = () => {
 
           <div className="contact-methods">
             <div className="contact-method-wrapper relative">
-              <a href="mailto:anizulfathool@gmail.com" className="contact-method">
+              <a 
+                href="mailto:anizulfathool@gmail.com" 
+                className="contact-method"
+                onClick={() => {
+                  window.location.href = 'mailto:anizulfathool@gmail.com';
+                }}
+              >
                 <div className="method-icon"><Mail size={20} /></div>
                 <div className="method-details">
                   <span className="method-label">Email Communications</span>
@@ -89,13 +95,13 @@ const Contact = () => {
                 <span className="method-val">linkedin.com/in/fathima-anizul-fathool</span>
               </div>
             </a>
-            <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" className="contact-method">
+            <div className="contact-method is-static">
               <div className="method-icon"><Github size={20} /></div>
               <div className="method-details">
                 <span className="method-label">Code Repository</span>
-                <span className="method-val">github.com/anizulbuhary</span>
+                <span className="method-val text-brand-light">Available on Request</span>
               </div>
-            </a>
+            </div>
           </div>
 
           <div className="qa-greeting">

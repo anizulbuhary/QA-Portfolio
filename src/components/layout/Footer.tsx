@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Github as GithubIcon, Linkedin as LinkedinIcon, Mail as MailIcon } from 'lucide-react';
+import { Linkedin as LinkedinIcon, Mail as MailIcon } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -25,19 +25,23 @@ const Footer = () => {
           <div className="link-group">
             <h4 className="link-group-title">Connect</h4>
             <Link to="/contact">Contact</Link>
+            <span className="footer-note">GitHub Repository: On Request</span>
           </div>
         </div>
 
         <div className="footer-actions">
           <div className="social-links" aria-label="Contact methods">
-            <a href="mailto:anizulfathool@gmail.com" title="Email anizulfathool@gmail.com">
+            <a 
+              href="mailto:anizulfathool@gmail.com" 
+              title="Email anizulfathool@gmail.com"
+              onClick={() => {
+                window.location.href = 'mailto:anizulfathool@gmail.com';
+              }}
+            >
               <MailIcon size={20} />
             </a>
             <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
               <LinkedinIcon size={20} />
-            </a>
-            <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
-              <GithubIcon size={20} />
             </a>
           </div>
         </div>

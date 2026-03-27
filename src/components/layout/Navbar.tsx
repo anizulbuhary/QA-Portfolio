@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Bug, Menu, X, Download, Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
+import { Bug, Menu, X, Download, Linkedin, Mail, ArrowRight } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
@@ -86,13 +86,17 @@ const Navbar = () => {
 
         <div className="nav-actions desktop-only">
             <div className="social-links-desktop">
-              <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" className="social-icon-nav" title="GitHub">
-                <Github size={18} />
-              </a>
               <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="social-icon-nav" title="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="mailto:anizulfathool@gmail.com" className="social-icon-nav" title="Email">
+              <a 
+                href="mailto:anizulfathool@gmail.com" 
+                className="social-icon-nav" 
+                title="Email"
+                onClick={() => {
+                  window.location.href = 'mailto:anizulfathool@gmail.com';
+                }}
+              >
                 <Mail size={18} />
               </a>
             </div>
@@ -171,13 +175,16 @@ const Navbar = () => {
                   </a>
 
                   <div className="mobile-socials">
-                    <a href="https://github.com/anizulbuhary" target="_blank" rel="noopener noreferrer" className="social-icon">
-                      <Github size={20} />
-                    </a>
                     <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="social-icon">
                       <Linkedin size={20} />
                     </a>
-                    <a href="mailto:anizulfathool@gmail.com" className="social-icon">
+                    <a 
+                      href="mailto:anizulfathool@gmail.com" 
+                      className="social-icon"
+                      onClick={() => {
+                        window.location.href = 'mailto:anizulfathool@gmail.com';
+                      }}
+                    >
                       <Mail size={20} />
                     </a>
                   </div>
