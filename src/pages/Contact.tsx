@@ -1,21 +1,35 @@
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Send, TerminalSquare, Phone } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Linkedin, Github, Send, TerminalSquare, Phone, CheckCircle, AlertTriangle, Loader2 } from 'lucide-react';
 import { SeverityBadge } from '../components/ui/SeverityBadge';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleTransmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-    
-    const subject = encodeURIComponent(`QA Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(`Sender: ${name} (${email})\n\nMessage:\n${message}`);
-    
-    window.location.href = `mailto:anizulfathool@gmail.com?subject=${subject}&body=${body}`;
+    if (!formRef.current) return;
+
+    setStatus('sending');
+
+    // These should be replaced with your actual EmailJS IDs
+    const SERVICE_ID = 'YOUR_SERVICE_ID';
+    const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+    const PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then(() => {
+        setStatus('success');
+        formRef.current?.reset();
+        setTimeout(() => setStatus('idle'), 5000);
+      }, (error) => {
+        console.error('Email Error:', error);
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      });
   };
 
   return (
@@ -97,10 +111,25 @@ const Contact = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <form className="contact-form" onSubmit={handleTransmit}>
+          <form className="contact-form" ref={formRef} onSubmit={handleTransmit}>
             <div className="form-header">
               <h3>Secure Message Relay</h3>
-              <span className="form-status mono-text">ENDPOINT READY</span>
+              <div className="form-status-indicator">
+                <AnimatePresence mode="wait">
+                  {status === 'idle' && (
+                    <motion.span key="ready" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="form-status mono-text">ENDPOINT READY</motion.span>
+                  )}
+                  {status === 'sending' && (
+                    <motion.span key="sending" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="form-status sending mono-text"><Loader2 size={12} className="animate-spin" /> ENCRYPTING...</motion.span>
+                  )}
+                  {status === 'success' && (
+                    <motion.span key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="form-status pass mono-text">TRANSMISSION COMPLETE</motion.span>
+                  )}
+                  {status === 'error' && (
+                    <motion.span key="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="form-status fail mono-text">XMIT FAILED</motion.span>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             <div className="form-group">
@@ -118,8 +147,15 @@ const Contact = () => {
               <textarea id="message" name="message" rows={5} placeholder="Discussing a potential QA opportunity..." required></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary submit-btn">
-              Transmit <Send size={16} />
+            <button 
+              type="submit" 
+              className={`btn btn-primary submit-btn ${status !== 'idle' ? 'loading' : ''}`}
+              disabled={status !== 'idle'}
+            >
+              {status === 'idle' && <>Transmit <Send size={16} /></>}
+              {status === 'sending' && <>Encrypting...</>}
+              {status === 'success' && <>Sent <CheckCircle size={16} /></>}
+              {status === 'error' && <>Retry <AlertTriangle size={16} /></>}
             </button>
           </form>
         </motion.div>
