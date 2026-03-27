@@ -1,19 +1,9 @@
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Send, TerminalSquare, Phone, Copy, Check } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, TerminalSquare, Phone } from 'lucide-react';
 import { SeverityBadge } from '../components/ui/SeverityBadge';
-import { useState } from 'react';
 import './Contact.css';
 
 const Contact = () => {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText('anizulfathool@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const handleTransmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,28 +49,19 @@ const Contact = () => {
           </div>
 
           <div className="contact-methods">
-            <div className="contact-method-wrapper relative">
-              <a 
-                href="mailto:anizulfathool@gmail.com" 
-                className="contact-method"
-                onClick={() => {
-                  window.location.href = 'mailto:anizulfathool@gmail.com';
-                }}
-              >
-                <div className="method-icon"><Mail size={20} /></div>
-                <div className="method-details">
-                  <span className="method-label">Email Communications</span>
-                  <span className="method-val">anizulfathool@gmail.com</span>
-                </div>
-              </a>
-              <button 
-                className={`copy-btn ${copied ? 'copied' : ''}`}
-                onClick={copyEmail}
-                title="Copy Email Address"
-              >
-                {copied ? <Check size={16} /> : <Copy size={16} />}
-              </button>
-            </div>
+            <a 
+              href="mailto:anizulfathool@gmail.com" 
+              className="contact-method"
+              onClick={() => {
+                window.location.href = 'mailto:anizulfathool@gmail.com';
+              }}
+            >
+              <div className="method-icon"><Mail size={20} /></div>
+              <div className="method-details">
+                <span className="method-label">Email Communications</span>
+                <span className="method-val">anizulfathool@gmail.com</span>
+              </div>
+            </a>
             <a href="tel:+94774168673" className="contact-method">
               <div className="method-icon"><Phone size={20} /></div>
               <div className="method-details">
