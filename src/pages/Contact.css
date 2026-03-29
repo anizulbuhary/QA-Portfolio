@@ -11,6 +11,11 @@
   margin-top: var(--spacing-3xl);
 }
 
+.cv-request-layout {
+  grid-template-columns: minmax(auto, 700px);
+  justify-content: center;
+}
+
 .contact-info-panel {
   display: flex;
   flex-direction: column;

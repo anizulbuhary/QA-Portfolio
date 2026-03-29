@@ -74,15 +74,16 @@ const Contact = () => {
         </div>
       </motion.div>
 
-      <div className="contact-grid container">
-        <motion.div
-          className="contact-info-panel"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <div className="availability-card">
-            <div className="avail-status pass"></div>
+      <div className={`contact-grid container ${isCVRequest ? 'cv-request-layout' : ''}`}>
+        {!isCVRequest && (
+          <motion.div
+            className="contact-info-panel"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="availability-card">
+              <div className="avail-status pass"></div>
             <div>
               <h3>Currently Available</h3>
               <p>Ready to join a quality-focused engineering team</p>
@@ -132,6 +133,7 @@ const Contact = () => {
             <span className="mono-text">Awaiting input stream...</span>
           </div>
         </motion.div>
+        )}
 
         <motion.div
           className="contact-form-panel"
