@@ -76,13 +76,13 @@ const Contact = () => {
                 <span className="method-val">anizulfathool@gmail.com</span>
               </div>
             </a>
-            <a href="tel:+94774168673" className="contact-method">
+            <div className="contact-method is-static">
               <div className="method-icon"><Phone size={20} /></div>
               <div className="method-details">
                 <span className="method-label">Mobile Hotline</span>
-                <span className="method-val">+94 774 168 673</span>
+                <span className="method-val text-brand-light">Available on Request</span>
               </div>
-            </a>
+            </div>
             <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="contact-method">
               <div className="method-icon"><Linkedin size={20} /></div>
               <div className="method-details">

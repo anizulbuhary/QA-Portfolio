@@ -8,12 +8,14 @@
   transition: all 0.3s ease;
 }
 
+
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 4rem;
 }
+
 
 .brand {
   display: flex;
@@ -248,6 +250,7 @@
     overflow-y: auto;
     max-height: calc(100vh - 4rem);
   }
+
 
   .mobile-menu-content {
     display: flex;
