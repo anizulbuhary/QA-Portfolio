@@ -49,6 +49,8 @@ const Contact = () => {
       });
   };
 
+  const isCVRequest = new URLSearchParams(location.search).get('request') === 'cv';
+
   return (
     <div className="contact-page">
       <motion.div
@@ -58,9 +60,17 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="container">
-          <SeverityBadge level="low">Open Network</SeverityBadge>
-          <h1 className="page-title">Initialize Endpoint</h1>
-          <p className="page-subtitle">Available for Software Quality Assurance Internship or Junior SQA engineering opportunities.</p>
+          <SeverityBadge level={isCVRequest ? "high" : "low"}>
+            {isCVRequest ? "Credential Request" : "Open Network"}
+          </SeverityBadge>
+          <h1 className="page-title">
+            {isCVRequest ? "Request CV Delivery" : "Initialize Endpoint"}
+          </h1>
+          <p className="page-subtitle">
+            {isCVRequest 
+              ? "Please provide your details below to request a copy of Fathima Anizul's professional CV."
+              : "Available for Software Quality Assurance Internship or Junior SQA engineering opportunities."}
+          </p>
         </div>
       </motion.div>
 
