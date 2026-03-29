@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Bug, Menu, X, Download, Linkedin, Mail, ArrowRight, Sun, Moon } from 'lucide-react';
+import { Bug, Menu, X, Linkedin, Mail, ArrowRight, Sun, Moon } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 import './Navbar.css';
@@ -97,12 +97,12 @@ const Navbar = () => {
               <span>Contact</span>
             </Link>
             <a 
-              href="/Fathima_Anizul_Fathool_SQA_CV.pdf" 
-              download 
+              href="mailto:anizulfathool@gmail.com?subject=CV Request - Fathima Anizul Fathool&body=Hi Anizul, I am interested in your profile and would like to request a copy of your CV."
               className="status-badge variant-outline compact"
+              title="Request CV via Email"
             >
-              <Download size={14} />
-              <span>CV</span>
+              <Mail size={14} />
+              <span>Request CV</span>
             </a>
             <button 
               className="theme-toggle" 
@@ -165,12 +165,11 @@ const Navbar = () => {
                   transition={{ delay: 0.5 }}
                 >
                   <a 
-                    href="/Fathima_Anizul_Fathool_SQA_CV.pdf" 
-                    download 
+                    href="mailto:anizulfathool@gmail.com?subject=CV Request - Fathima Anizul Fathool&body=Hi Anizul, I am interested in your profile and would like to request a copy of your CV."
                     className="mobile-cv-btn"
                   >
-                    <Download size={18} />
-                    <span>Download CV</span>
+                    <Mail size={18} />
+                    <span>Request CV</span>
                   </a>
 
                    <div className="mobile-socials">
