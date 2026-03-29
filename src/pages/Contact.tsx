@@ -1,29 +1,16 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Linkedin, Github, Send, TerminalSquare, Phone, CheckCircle, AlertTriangle, Loader2 } from 'lucide-react';
 import { SeverityBadge } from '../components/ui/SeverityBadge';
-import { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useRef } from 'react';
+
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const location = useLocation();
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get('request') === 'cv') {
-      setMessage("Hi Anizul, I'm interested in your profile and would like to request a copy of your CV.");
-      
-      // Smooth scroll to form on mobile if needed
-      if (window.innerWidth < 992) {
-        const formElement = document.querySelector('.contact-form-panel');
-        formElement?.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [location]);
 
   const handleTransmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,8 +36,6 @@ const Contact = () => {
       });
   };
 
-  const isCVRequest = new URLSearchParams(location.search).get('request') === 'cv';
-
   return (
     <div className="contact-page">
       <motion.div
@@ -60,30 +45,21 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="container">
-          <SeverityBadge level={isCVRequest ? "high" : "low"}>
-            {isCVRequest ? "Credential Request" : "Open Network"}
-          </SeverityBadge>
-          <h1 className="page-title">
-            {isCVRequest ? "Request CV Delivery" : "Initialize Endpoint"}
-          </h1>
-          <p className="page-subtitle">
-            {isCVRequest 
-              ? "Please provide your details below to request a copy of Fathima Anizul's professional CV."
-              : "Available for Software Quality Assurance Internship or Junior SQA engineering opportunities."}
-          </p>
+          <SeverityBadge level="low">Open Network</SeverityBadge>
+          <h1 className="page-title">Initialize Endpoint</h1>
+          <p className="page-subtitle">Available for Software Quality Assurance Internship or Junior SQA engineering opportunities.</p>
         </div>
       </motion.div>
 
-      <div className={`contact-grid container ${isCVRequest ? 'cv-request-layout' : ''}`}>
-        {!isCVRequest && (
-          <motion.div
-            className="contact-info-panel"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="availability-card">
-              <div className="avail-status pass"></div>
+      <div className="contact-grid container">
+        <motion.div
+          className="contact-info-panel"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="availability-card">
+            <div className="avail-status pass"></div>
             <div>
               <h3>Currently Available</h3>
               <p>Ready to join a quality-focused engineering team</p>
@@ -133,7 +109,6 @@ const Contact = () => {
             <span className="mono-text">Awaiting input stream...</span>
           </div>
         </motion.div>
-        )}
 
         <motion.div
           className="contact-form-panel"

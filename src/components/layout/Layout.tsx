@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { AnimatedBug } from '../ui/AnimatedBug';
 import { BugStats } from '../ui/BugStats';
+import { CVRequestModal } from '../ui/CVRequestModal';
 
 const Layout = () => {
   return (
@@ -14,6 +15,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <CVRequestModal />
     </div>
   );
 };

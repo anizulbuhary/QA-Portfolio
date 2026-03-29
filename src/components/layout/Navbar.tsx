@@ -96,14 +96,14 @@ const Navbar = () => {
               <Mail size={14} />
               <span>Contact</span>
             </Link>
-            <Link 
-              to="/contact?request=cv"
+            <a 
+              href="#request-cv"
               className="status-badge variant-outline compact"
-              title="Request CV via Secure Portal"
+              title="Request CV via Secure Terminal"
             >
               <Mail size={14} />
               <span>Request CV</span>
-            </Link>
+            </a>
             <button 
               className="theme-toggle" 
               onClick={toggleTheme}
@@ -164,14 +164,14 @@ const Navbar = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <Link 
-                    to="/contact?request=cv"
+                  <a 
+                    href="#request-cv"
                     className="mobile-cv-btn"
                     onClick={() => setIsOpen(false)}
                   >
                     <Mail size={18} />
                     <span>Request CV</span>
-                  </Link>
+                  </a>
 
                    <div className="mobile-socials">
                     <a href="https://www.linkedin.com/in/fathima-anizul-fathool-9297451bb" target="_blank" rel="noopener noreferrer" className="social-icon">
