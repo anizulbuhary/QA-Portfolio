@@ -1,13 +1,29 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Linkedin, Github, Send, TerminalSquare, Phone, CheckCircle, AlertTriangle, Loader2 } from 'lucide-react';
 import { SeverityBadge } from '../components/ui/SeverityBadge';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const location = useLocation();
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('request') === 'cv') {
+      setMessage("Hi Anizul, I'm interested in your profile and would like to request a copy of your CV.");
+      
+      // Smooth scroll to form on mobile if needed
+      if (window.innerWidth < 992) {
+        const formElement = document.querySelector('.contact-form-panel');
+        formElement?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
   const handleTransmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +40,7 @@ const Contact = () => {
       .then(() => {
         setStatus('success');
         formRef.current?.reset();
+        setMessage('');
         setTimeout(() => setStatus('idle'), 5000);
       }, (error) => {
         console.error('Email Error:', error);
@@ -66,7 +83,8 @@ const Contact = () => {
             <a 
               href="mailto:anizulfathool@gmail.com" 
               className="contact-method"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 window.location.href = 'mailto:anizulfathool@gmail.com';
               }}
             >
@@ -144,7 +162,15 @@ const Contact = () => {
 
             <div className="form-group">
               <label htmlFor="message">Payload (Message)</label>
-              <textarea id="message" name="message" rows={5} placeholder="Discussing a potential QA opportunity..." required></textarea>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows={5} 
+                placeholder="Discussing a potential QA opportunity..." 
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
             </div>
 
             <button 
